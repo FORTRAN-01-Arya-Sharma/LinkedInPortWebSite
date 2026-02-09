@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #00f2ea;
+  --color-accent: #7000ff;
+  --color-dark: #050505;
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  * { 
+    cursor: none !important; 
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    @apply bg-dark text-white antialiased selection:bg-brand selection:text-black;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Hard lock on horizontal scroll */
+    position: relative;
+  }
+}
+
+/* 
+   ULTRA-RESPONSIVE TYPOGRAPHY 
+   Lowers the base size to 1.8rem for small phones 
+*/
+.fluid-heading {
+  font-size: clamp(1.8rem, 10vw, 9rem);
+  line-height: 0.9;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.glass-panel {
+  @apply bg-white/[0.02] backdrop-blur-2xl border border-white/10 rounded-[1.5rem] md:rounded-[3rem] transition-all duration-700;
+  width: 100%; 
+  max-width: 100%;
+  overflow: hidden; /* Clips internal glows that cause scroll */
+}
+
+/* Animations */
+@keyframes text-flow {
+  from { background-position: 0% center; }
+  to { background-position: 200% center; }
+}
+.animate-text-flow { animation: text-flow 4s linear infinite; }
+
+@media (max-width: 1024px) {
+  * { cursor: auto !important; }
+}
