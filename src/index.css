@@ -4,41 +4,127 @@
   --color-brand: #00f2ea;
   --color-accent: #7000ff;
   --color-dark: #050505;
+  --color-danger: #ff2d55;
   --font-sans: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
 @layer base {
-  * { cursor: none !important; -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
-  body {
-    @apply bg-dark text-white antialiased selection:bg-brand selection:text-black overflow-x-hidden;
-    width: 100%; margin: 0; scroll-behavior: smooth;
+  * { 
+    cursor: none !important; 
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    @apply bg-dark text-white antialiased selection:bg-brand selection:text-black;
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* CUSTOM NEON SCROLLBAR */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--color-dark); }
+  ::-webkit-scrollbar-thumb { 
+    background: linear-gradient(to bottom, var(--color-brand), var(--color-accent));
+    border-radius: 10px;
   }
 }
 
-.fluid-heading {
-  font-size: clamp(2rem, 10vw, 8.5rem);
-  line-height: 0.85;
-  word-break: break-word;
+/* 1. DYNAMIC CYBER GRID (Animated Background) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 242, 234, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 242, 234, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center center;
+  z-index: -1;
+  animation: grid-move 20s linear infinite;
 }
 
+@keyframes grid-move {
+  from { transform: translateY(0); }
+  to { transform: translateY(60px); }
+}
+
+/* 2. LIQUID FLOW HEADINGS (Improved) */
+.fluid-heading {
+  font-size: clamp(2.2rem, 11vw, 9rem);
+  line-height: 0.85;
+  word-break: break-word;
+  filter: drop-shadow(0 0 20px rgba(0, 242, 234, 0.15));
+}
+
+.animate-text-flow {
+  background-size: 200% auto;
+  animation: text-flow 4s linear infinite;
+}
+
+@keyframes text-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 3. NEON BREATHING GLASS PANELS */
 .glass-panel {
-  @apply bg-white/[0.02] backdrop-blur-2xl border border-white/10 rounded-[1.5rem] md:rounded-[3rem] transition-all duration-700;
-  max-width: 100%; overflow: hidden;
+  @apply bg-white/[0.01] backdrop-blur-3xl border border-white/10 rounded-[1.5rem] md:rounded-[3rem] transition-all;
+  transition-duration: 700ms;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .glass-panel:hover {
-  @apply border-brand/50 bg-white/[0.08] shadow-[0_0_60px_rgba(0,242,234,0.15)];
+  @apply border-brand/40 bg-white/[0.04];
+  box-shadow: 
+    0 0 40px rgba(0, 242, 234, 0.1),
+    inset 0 0 20px rgba(0, 242, 234, 0.05);
+  transform: translateY(-5px);
 }
 
-@keyframes text-flow { from { background-position: 0% center; } to { background-position: 200% center; } }
-.animate-text-flow { animation: text-flow 4s linear infinite; }
+/* 4. THE SCANNING LASER (The Flashy Line) */
+@keyframes scanning-sweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(1000%); opacity: 0; }
+}
 
-@keyframes scanning-sweep { 0% { top: -5%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 105%; opacity: 0; } }
 .animate-scanning-line {
-  @apply absolute left-0 w-full h-[2px] bg-brand z-20 pointer-events-none opacity-0;
-  box-shadow: 0 0 15px var(--color-brand);
-  animation: scanning-sweep 2s linear infinite;
+  @apply absolute left-0 w-full h-[3px] bg-brand z-20 pointer-events-none opacity-0;
+  box-shadow: 
+    0 0 20px var(--color-brand),
+    0 0 40px var(--color-brand);
+  animation: scanning-sweep 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-@media (max-width: 1024px) { * { cursor: auto !important; } }
+/* 5. CRT / SYSTEM TEXTURE */
+.scanlines-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.1) 50%
+  ), linear-gradient(
+    90deg, 
+    rgba(255, 0, 0, 0.02), 
+    rgba(0, 255, 0, 0.01), 
+    rgba(0, 0, 118, 0.02)
+  );
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* 6. MAGNETIC BUTTONS GLOW */
+button:hover {
+  filter: drop-shadow(0 0 15px var(--color-brand));
+}
+
+@media (max-width: 1024px) {
+  * { cursor: auto !important; }
+}
