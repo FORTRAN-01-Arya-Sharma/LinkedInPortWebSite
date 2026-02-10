@@ -162,7 +162,7 @@ const App = () => {
                   {displayText}<span className="text-brand border-r-4 md:border-r-8 border-brand ml-1 animate-pulse" />
                 </h1>
                 <div className="flex flex-wrap gap-4 text-gray-500 font-mono text-[9px] uppercase tracking-widest">
-                  <button onClick={() => setActiveModal('dev')} className="hover:text-brand flex items-center gap-2"><Trophy size={14}/> Knight_1700+</button>
+                  <button onClick={() => setActiveModal('dev')} className="hover:text-brand flex items-center gap-2"><Trophy size={14}/> Knight_1600+</button>
                   <a href={data.links.github} target="_blank" rel="noreferrer" className="hover:text-brand flex items-center gap-2 transition-colors"><Github size={14}/> GitHub Hub</a>
                 </div>
               </section>
