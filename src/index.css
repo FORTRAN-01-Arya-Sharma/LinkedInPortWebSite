@@ -9,81 +9,36 @@
 }
 
 @layer base {
-  * { cursor: none !important; }
+  * { cursor: none !important; -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
   body {
     @apply bg-dark text-white antialiased selection:bg-brand selection:text-black overflow-x-hidden;
-    width: 100%;
+    width: 100%; margin: 0; scroll-behavior: smooth;
   }
 }
 
-/* 2x Master Flow Animations */
-@keyframes text-flow {
-  from { background-position: 0% center; }
-  to { background-position: 200% center; }
-}
-.animate-text-flow { animation: text-flow 4s linear infinite; }
-
-/* Custom Fluid Headings */
 .fluid-heading {
-  font-size: clamp(2.5rem, 10vw, 8.5rem);
+  font-size: clamp(2rem, 10vw, 8.5rem);
   line-height: 0.85;
   word-break: break-word;
 }
 
-/* Scanline Effect */
-.scan-line {
-  width: 100%; height: 100%;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0, 242, 234, 0.05) 50%);
-  background-size: 100% 4px;
-  position: absolute; top: 0; left: 0;
-  pointer-events: none;
-  z-index: 10;
-}
-
 .glass-panel {
   @apply bg-white/[0.02] backdrop-blur-2xl border border-white/10 rounded-[1.5rem] md:rounded-[3rem] transition-all duration-700;
-  max-width: 100%;
+  max-width: 100%; overflow: hidden;
 }
 
 .glass-panel:hover {
   @apply border-brand/50 bg-white/[0.08] shadow-[0_0_60px_rgba(0,242,234,0.15)];
 }
 
-/* Scroll Progress Line */
-.scroll-progress {
-  @apply fixed bottom-0 left-0 h-[2px] bg-brand origin-left z-[1000];
-}
+@keyframes text-flow { from { background-position: 0% center; } to { background-position: 200% center; } }
+.animate-text-flow { animation: text-flow 4s linear infinite; }
 
-@media (max-width: 1024px) {
-  * { cursor: auto !important; }
-}
-/* Neon Scanning Line Animation */
-@keyframes scanning-sweep {
-  0% { top: -5%; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { top: 105%; opacity: 0; }
-}
-
+@keyframes scanning-sweep { 0% { top: -5%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 105%; opacity: 0; } }
 .animate-scanning-line {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-brand), transparent);
-  box-shadow: 0 0 15px var(--color-brand), 0 0 30px var(--color-brand);
-  z-index: 20;
-  pointer-events: none;
+  @apply absolute left-0 w-full h-[2px] bg-brand z-20 pointer-events-none opacity-0;
+  box-shadow: 0 0 15px var(--color-brand);
   animation: scanning-sweep 2s linear infinite;
 }
 
-/* Enhancing the static scanlines (the grid/texture) */
-.scanlines-texture {
-  width: 100%; height: 100%;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.3) 50%);
-  background-size: 100% 4px;
-  position: absolute; top: 0; left: 0;
-  pointer-events: none;
-  z-index: 10;
-  opacity: 0.2;
-}
+@media (max-width: 1024px) { * { cursor: auto !important; } }
