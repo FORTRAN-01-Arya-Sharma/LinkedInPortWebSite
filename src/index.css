@@ -128,3 +128,17 @@ button:hover {
 @media (max-width: 1024px) {
   * { cursor: auto !important; }
 }
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px; /* slightly larger for visibility */
+  height: 40px;
+  border: 1px solid var(--color-brand);
+  border-radius: 50%;
+  pointer-events: none; /* CRITICAL: Allows clicking through the cursor */
+  z-index: 99999999; /* Higher than the modal */
+  transition: transform 0.1s ease-out;
+  mix-blend-mode: difference; /* Makes it visible on all backgrounds */
+}

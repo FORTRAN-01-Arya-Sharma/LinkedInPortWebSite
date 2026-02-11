@@ -74,7 +74,7 @@ const App = () => {
       instagram: "https://instagram.com/arya_sharma", 
       email: "aryasharma.work@gmail.com", 
       phone: "+91 98170 37928", 
-      leetcode: "https://leetcode.com/u/aryasharma_dev/", 
+      leetcode: "https://leetcode.com/u/aryasharma_dev", 
       codechef: "https://www.codechef.com/users/aryasharma3012" 
     },
     skills: [
@@ -294,10 +294,50 @@ const App = () => {
       {/* MODALS */}
       <AnimatePresence>
         {activeModal === 'dev' && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[10000000] bg-dark/95 backdrop-blur-3xl flex items-center justify-center p-6"><div className="max-w-2xl w-full glass-panel p-10 md:p-16 relative"><button onClick={() => setActiveModal(null)} className="absolute top-10 right-10 text-gray-500 hover:text-brand"><X size={32}/></button><Trophy className="text-brand mb-10" size={56} /><h3 className="text-5xl font-black mb-12 tracking-tighter uppercase">Ranking</h3><div className="space-y-10 mt-16 font-mono"><div className="flex justify-between border-b border-white/10 pb-6"><span className="text-xs uppercase text-gray-500">LeetCode Peak</span><span className="text-5xl font-black text-brand">1700+</span></div><div className="grid sm:grid-cols-2 gap-4 font-black"><a href={data.links.leetcode} target="_blank" rel="noreferrer" className="py-5 glass-panel text-center text-[10px] tracking-widest uppercase hover:bg-brand/10">LEETCODE_URL</a><a href={data.links.codechef} target="_blank" rel="noreferrer" className="py-5 glass-panel text-center text-[10px] tracking-widest uppercase hover:bg-brand/10">CODECHEF_URL</a></div></div></div></motion.div>
-        )}
-        {activeModal === 'resume' && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[10000000] bg-dark/98 backdrop-blur-3xl p-6 md:p-20 flex flex-col items-center"><div className="w-full h-full max-w-4xl glass-panel relative p-1 overflow-hidden"><button onClick={() => setActiveModal(null)} className="absolute top-6 right-6 z-10 p-3 bg-dark rounded-full text-white border border-white/10"><X size={24}/></button><iframe src="/resume.pdf" className="w-full h-full rounded-[1.5rem] md:rounded-[2.5rem] border-none" title="Resume" /></div><a href="/resume.pdf" download className="mt-8 px-12 py-5 bg-white text-black font-black uppercase text-xs tracking-widest rounded-full hover:bg-brand transition-all">Download_Master_PDF</a></motion.div>
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} 
+            className="fixed inset-0 z-[9999999] bg-dark/95 backdrop-blur-3xl flex items-center justify-center p-6"
+          >
+            <div className="max-w-2xl w-full glass-panel p-10 md:p-16 relative border-brand/20">
+              <button 
+                onClick={() => setActiveModal(null)} 
+                className="absolute top-10 right-10 text-gray-500 hover:text-brand transition-colors p-2"
+              >
+                <X size={32}/>
+              </button>
+              
+              <Trophy className="text-brand mb-10" size={56} />
+              <h3 className="text-5xl font-black mb-12 tracking-tighter uppercase leading-none">Ranking</h3>
+              
+              <div className="space-y-10 mt-16 font-mono">
+                <div className="flex justify-between border-b border-white/10 pb-6 items-end">
+                  <span className="text-xs uppercase tracking-widest text-gray-500">LeetCode Peak</span>
+                  <span className="text-5xl font-black text-brand tracking-tighter shadow-brand/20 drop-shadow-xl">
+                    1600+
+                  </span>
+                </div>
+                
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <a 
+                    href={data.links.leetcode} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="py-5 bg-white/5 border border-white/10 text-center text-[10px] font-black tracking-widest uppercase hover:bg-brand/10 hover:border-brand/40 transition-all rounded-2xl"
+                  >
+                    LEETCODE_URL
+                  </a>
+                  <a 
+                    href={data.links.codechef} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="py-5 bg-white/5 border border-white/10 text-center text-[10px] font-black tracking-widest uppercase hover:bg-brand/10 hover:border-brand/40 transition-all rounded-2xl"
+                  >
+                    CODECHEF_URL
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
