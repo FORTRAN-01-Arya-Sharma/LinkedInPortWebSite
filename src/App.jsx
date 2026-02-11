@@ -72,9 +72,9 @@ const App = () => {
       linkedin: "https://www.linkedin.com/in/arya-sharma-dev", 
       github: "https://github.com/FORTRAN-01-Arya-Sharma", 
       instagram: "https://instagram.com/arya_sharma", 
-      email: "aryasharma.work@gmail.com", 
+      email: "ashgrtz2003@gmail.com", 
       phone: "+91 98170 37928", 
-      leetcode: "https://leetcode.com/u/aryasharma_dev", 
+      leetcode: "https://leetcode.com/u/fortran-01-arya-sharma/", 
       codechef: "https://www.codechef.com/users/aryasharma3012" 
     },
     skills: [
@@ -119,9 +119,9 @@ const App = () => {
           <motion.div key="main" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full relative">
             
             {/* FIXED CURSOR: Added pointer-events-none so links are clickable */}
-            <div ref={cursorRef} className="fixed top-0 left-0 w-10 h-10 border border-brand rounded-full pointer-events-none z-[1000000] -ml-5 -mt-5 transition-transform duration-75 hidden lg:flex items-center justify-center">
+             <div ref={cursorRef} className="custom-cursor hidden lg:flex" />
                 <div className="w-1 h-1 bg-brand rounded-full" />
-            </div>
+            
 
             {/* NAVIGATION */}
             <nav className="fixed top-0 w-full z-[50000] border-b border-white/5 bg-dark/80 backdrop-blur-2xl px-4 md:px-12 py-4">
@@ -155,17 +155,40 @@ const App = () => {
 
             <main className="max-w-screen-2xl mx-auto px-4 md:px-12 pt-28 lg:pt-40" id="home">
               
-              {/* HERO */}
+              {/* HERO SECTION */}
               <section className="min-h-[70vh] flex flex-col justify-center mb-40 relative">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[90vw] aspect-square bg-brand/5 blur-[100px] -z-10 rounded-full animate-pulse" />
-                <h1 className="fluid-heading font-black tracking-tighter mb-10 text-transparent bg-clip-text bg-gradient-to-r from-brand via-accent to-brand bg-[length:200%_auto] animate-text-flow uppercase">
+                <h1 className="fluid-heading font-black tracking-tighter mb-12 text-transparent bg-clip-text bg-gradient-to-r from-brand via-accent to-brand bg-[length:200%_auto] animate-text-flow uppercase">
                   {displayText}<span className="text-brand border-r-4 md:border-r-8 border-brand ml-1 animate-pulse" />
                 </h1>
-                <div className="flex flex-wrap gap-4 text-gray-500 font-mono text-[9px] uppercase tracking-widest">
-                  <button onClick={() => setActiveModal('dev')} className="hover:text-brand flex items-center gap-2"><Trophy size={14}/> Knight_1600+</button>
-                  <a href={data.links.github} target="_blank" rel="noreferrer" className="hover:text-brand flex items-center gap-2 transition-colors"><Github size={14}/> GitHub Hub</a>
+
+                {/* DASHBOARD LINKS REFACTORED TO TACTILE BUTTONS */}
+                <div className="flex flex-wrap gap-4 items-center">
+                  <button 
+                    onClick={() => setActiveModal('dev')}
+                    className="group flex items-center gap-3 px-6 py-3 bg-white/5 border border-brand/20 rounded-full hover:border-brand/60 hover:bg-brand/10 transition-all duration-300"
+                  >
+                    <Trophy size={18} className="text-brand group-hover:scale-110 transition-transform" />
+                    <span className="text-xs font-mono font-bold tracking-widest text-gray-300 uppercase">
+                      Knight_1600+
+                    </span>
+                  </button>
+
+                  <a 
+                    href={data.links.github} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="group flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-full hover:border-brand/40 hover:bg-white/[0.08] transition-all duration-300"
+                  >
+                    <Github size={18} className="text-gray-400 group-hover:text-brand transition-colors" />
+                    <span className="text-xs font-mono font-bold tracking-widest text-gray-500 uppercase group-hover:text-white">
+                      GitHub_Hub
+                    </span>
+                    <ArrowUpRight size={14} className="text-gray-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </a>
                 </div>
               </section>
+              
 
               {/* ABOUT & ACHIEVEMENTS */}
               <section className="mb-40 scroll-mt-24" id="about">
@@ -294,50 +317,10 @@ const App = () => {
       {/* MODALS */}
       <AnimatePresence>
         {activeModal === 'dev' && (
-          <motion.div 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} 
-            className="fixed inset-0 z-[9999999] bg-dark/95 backdrop-blur-3xl flex items-center justify-center p-6"
-          >
-            <div className="max-w-2xl w-full glass-panel p-10 md:p-16 relative border-brand/20">
-              <button 
-                onClick={() => setActiveModal(null)} 
-                className="absolute top-10 right-10 text-gray-500 hover:text-brand transition-colors p-2"
-              >
-                <X size={32}/>
-              </button>
-              
-              <Trophy className="text-brand mb-10" size={56} />
-              <h3 className="text-5xl font-black mb-12 tracking-tighter uppercase leading-none">Ranking</h3>
-              
-              <div className="space-y-10 mt-16 font-mono">
-                <div className="flex justify-between border-b border-white/10 pb-6 items-end">
-                  <span className="text-xs uppercase tracking-widest text-gray-500">LeetCode Peak</span>
-                  <span className="text-5xl font-black text-brand tracking-tighter shadow-brand/20 drop-shadow-xl">
-                    1600+
-                  </span>
-                </div>
-                
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <a 
-                    href={data.links.leetcode} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="py-5 bg-white/5 border border-white/10 text-center text-[10px] font-black tracking-widest uppercase hover:bg-brand/10 hover:border-brand/40 transition-all rounded-2xl"
-                  >
-                    LEETCODE_URL
-                  </a>
-                  <a 
-                    href={data.links.codechef} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="py-5 bg-white/5 border border-white/10 text-center text-[10px] font-black tracking-widest uppercase hover:bg-brand/10 hover:border-brand/40 transition-all rounded-2xl"
-                  >
-                    CODECHEF_URL
-                  </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[10000000] bg-dark/95 backdrop-blur-3xl flex items-center justify-center p-6"><div className="max-w-2xl w-full glass-panel p-10 md:p-16 relative"><button onClick={() => setActiveModal(null)} className="absolute top-10 right-10 text-gray-500 hover:text-brand transition-colors"><X size={32}/></button><Trophy className="text-brand mb-10" size={56} /><h3 className="text-5xl font-black mb-12 tracking-tighter uppercase leading-none font-sans">Ranking</h3><div className="space-y-10 mt-16 font-mono"><div className="flex justify-between border-b border-white/10 pb-6"><span className="text-xs uppercase text-gray-500">LeetCode Peak</span><span className="text-5xl font-black text-brand tracking-tighter">1600+</span></div><div className="grid grid-cols-1 sm:grid-cols-2 gap-4"><a href={data.links.leetcode} className="py-5 glass-panel text-center text-[10px] font-black uppercase hover:bg-brand/10 transition-colors" target="_blank" rel="noreferrer">LEETCODE_URL</a><a href={data.links.codechef} className="py-5 glass-panel text-center text-[10px] font-black uppercase hover:bg-brand/10 transition-colors" target="_blank" rel="noreferrer">CODECHEF_URL</a></div></div></div></motion.div>
+        )}
+        {activeModal === 'resume' && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[10000000] bg-dark/98 backdrop-blur-3xl p-6 md:p-20 flex flex-col items-center"><div className="w-full h-full max-w-4xl glass-panel relative p-1 overflow-hidden shadow-2xl"><button onClick={() => setActiveModal(null)} className="absolute top-6 right-6 z-10 p-3 bg-dark rounded-full text-white border border-white/10 hover:text-brand transition-all"><X size={24}/></button><iframe src="/resume.pdf" className="w-full h-full rounded-[1.5rem] md:rounded-[2.5rem] border-none shadow-2xl" title="Resume" /></div><a href="/resume.pdf" download className="mt-8 px-12 py-5 bg-white text-black font-black uppercase text-xs tracking-widest rounded-full hover:bg-brand transition-all">Download_PDF</a></motion.div>
         )}
       </AnimatePresence>
     </div>
