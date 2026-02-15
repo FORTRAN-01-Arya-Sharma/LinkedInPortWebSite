@@ -86,9 +86,9 @@ const App = () => {
       { cat: "DevOps & Tools", items: "Git/GitHub, Docker, Vercel, Postman, Render", icon: <Layers className="text-pink-400"/> }
     ],
     achievements: [
-      { title: "LeetCode Ranking", val: "1600+", desc: "Knight Tier [Top 5% Global]", icon: <Trophy/> },
-      { title: "DSA Problems", val: "700+", desc: "Solved across platforms", icon: <Code2/> },
-      { title: "CodeChef Status", val: "3★", desc: "Active Contest Architect", icon: <Zap/> }
+      { title: "LeetCode Ranking", val: "", desc: "Road to Contest", icon: <Trophy/> },
+      { title: "DSA Problems", val: "300+", desc: "Solved across platforms", icon: <Code2/> },
+      { title: "CodeChef Status", desc: "Active Contest Architect", icon: <Zap/> }
     ],
     projects: [
       { 
@@ -170,7 +170,7 @@ const App = () => {
                   >
                     <Trophy size={18} className="text-brand group-hover:scale-110 transition-transform" />
                     <span className="text-xs font-mono font-bold tracking-widest text-gray-300 uppercase">
-                      Knight_1600+
+                      LeetCode
                     </span>
                   </button>
 
@@ -317,7 +317,7 @@ const App = () => {
       {/* MODALS */}
       <AnimatePresence>
         {activeModal === 'dev' && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[10000000] bg-dark/95 backdrop-blur-3xl flex items-center justify-center p-6"><div className="max-w-2xl w-full glass-panel p-10 md:p-16 relative"><button onClick={() => setActiveModal(null)} className="absolute top-10 right-10 text-gray-500 hover:text-brand transition-colors"><X size={32}/></button><Trophy className="text-brand mb-10" size={56} /><h3 className="text-5xl font-black mb-12 tracking-tighter uppercase leading-none font-sans">Ranking</h3><div className="space-y-10 mt-16 font-mono"><div className="flex justify-between border-b border-white/10 pb-6"><span className="text-xs uppercase text-gray-500">LeetCode Peak</span><span className="text-5xl font-black text-brand tracking-tighter">1600+</span></div><div className="grid grid-cols-1 sm:grid-cols-2 gap-4"><a href={data.links.leetcode} className="py-5 glass-panel text-center text-[10px] font-black uppercase hover:bg-brand/10 transition-colors" target="_blank" rel="noreferrer">LEETCODE_URL</a><a href={data.links.codechef} className="py-5 glass-panel text-center text-[10px] font-black uppercase hover:bg-brand/10 transition-colors" target="_blank" rel="noreferrer">CODECHEF_URL</a></div></div></div></motion.div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[10000000] bg-dark/95 backdrop-blur-3xl flex items-center justify-center p-6"><div className="max-w-2xl w-full glass-panel p-10 md:p-16 relative"><button onClick={() => setActiveModal(null)} className="absolute top-10 right-10 text-gray-500 hover:text-brand transition-colors"><X size={32}/></button><Trophy className="text-brand mb-10" size={56} /><h3 className="text-5xl font-black mb-12 tracking-tighter uppercase leading-none font-sans">Ranking</h3><div className="space-y-10 mt-16 font-mono"><div className="flex justify-between border-b border-white/10 pb-6"><span className="text-xs uppercase text-gray-500">LeetCode Peak</span><span className="text-5xl font-black text-brand tracking-tighter">Progressing</span></div><div className="grid grid-cols-1 sm:grid-cols-2 gap-4"><a href={data.links.leetcode} className="py-5 glass-panel text-center text-[10px] font-black uppercase hover:bg-brand/10 transition-colors" target="_blank" rel="noreferrer">LEETCODE_URL</a><a href={data.links.codechef} className="py-5 glass-panel text-center text-[10px] font-black uppercase hover:bg-brand/10 transition-colors" target="_blank" rel="noreferrer">CODECHEF_URL</a></div></div></div></motion.div>
         )}
         {activeModal === 'resume' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[10000000] bg-dark/98 backdrop-blur-3xl p-6 md:p-20 flex flex-col items-center"><div className="w-full h-full max-w-4xl glass-panel relative p-1 overflow-hidden shadow-2xl"><button onClick={() => setActiveModal(null)} className="absolute top-6 right-6 z-10 p-3 bg-dark rounded-full text-white border border-white/10 hover:text-brand transition-all"><X size={24}/></button><iframe src="/resume.pdf" className="w-full h-full rounded-[1.5rem] md:rounded-[2.5rem] border-none shadow-2xl" title="Resume" /></div><a href="/resume.pdf" download className="mt-8 px-12 py-5 bg-white text-black font-black uppercase text-xs tracking-widest rounded-full hover:bg-brand transition-all">Download_PDF</a></motion.div>
